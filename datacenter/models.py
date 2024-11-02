@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.timezone import localtime
+
 
 class Passcard(models.Model):
     is_active = models.BooleanField(default=False)
@@ -29,10 +29,3 @@ class Visit(models.Model):
             )
         )
 
-def is_visit_long(visit, minutes=60):
-    if visit.leaved_at is None:
-        return 'В хранилище'
-    start_time = localtime(visit.entered_at)
-    finish_time = localtime(visit.leaved_at)
-    total_time = ((finish_time - start_time).total_seconds()) // 60
-    return minutes < total_time

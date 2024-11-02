@@ -1,7 +1,7 @@
-from datacenter.models import Passcard, Visit, is_visit_long
+from datacenter.models import Passcard, Visit
 from django.shortcuts import render
-from datacenter.storage_information_view import get_duration
 from django.shortcuts import get_object_or_404
+from datacenter.duration_helper import is_visit_long, get_duration
 
 def my_view(request):
     obj = get_object_or_404(request, pk=1)

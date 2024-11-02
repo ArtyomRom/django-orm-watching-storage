@@ -1,20 +1,6 @@
-from datacenter.models import Visit, is_visit_long
+from datacenter.models import Visit
 from django.shortcuts import render
-from django.utils.timezone import localtime
-from pytz import timezone as pytz_timezone
-import time
-
-
-def get_duration(start, end):
-    total_time = (localtime(end) - localtime(start)).total_seconds()
-    return time.strftime('%H:%M', time.gmtime(total_time))
-
-
-def format_duration(time):
-    moscow_tz = pytz_timezone('Europe/Moscow')
-    return localtime(time, timezone=moscow_tz)
-
-
+from datacenter.duration_helper import format_duration, get_duration, is_visit_long
 
 
 def storage_information_view(request):
