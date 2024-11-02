@@ -3,13 +3,11 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from datacenter.duration_helper import is_visit_long, get_duration
 
-def my_view(request):
-    obj = get_object_or_404(request, pk=1)
 
 def passcard_info_view(request, passcode):
-    passcard = Passcard.objects.all().filter(passcode=passcode)[0]
-    visits = Visit.objects.all().filter(passcard=passcard.id)
-
+    passcard = Passcard.objects.all().filter(passcode=passcode)
+    get_object_or_404(passcard)
+    visits = Visit.objects.all().filter(passcard=passcard[0].id)
     this_passcard_visits = [
         {
             'entered_at': visit.entered_at,
@@ -18,7 +16,7 @@ def passcard_info_view(request, passcode):
         } for visit in visits
     ]
     context = {
-        'passcard': passcard,
+        'passcard': passcard[0],
         'this_passcard_visits': this_passcard_visits
     }
     return render(request, 'passcard_info.html', context)
