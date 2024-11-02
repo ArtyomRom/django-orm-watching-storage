@@ -3,8 +3,6 @@ from django.shortcuts import render
 
 
 def active_passcards_view(request):
-    # Программируем здесь
-
     all_passcards = Passcard.objects.all()
     all_visits = Visit.objects.all()
     context = {
