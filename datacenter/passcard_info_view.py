@@ -5,9 +5,9 @@ from datacenter.duration_helper import is_visit_long, get_duration
 
 
 def passcard_info_view(request, passcode):
-    passcard = Passcard.objects.all().filter(passcode=passcode)
-    get_object_or_404(passcard)
-    visits = Visit.objects.filter(passcard=passcard[0])
+    get_object_or_404(Passcard.objects.filter(passcode=passcode))
+    passcard = Passcard.objects.get(passcode=passcode)
+    visits = Visit.objects.filter(passcard=passcard)
     this_passcard_visits = [
         {
             'entered_at': visit.entered_at,
@@ -16,7 +16,7 @@ def passcard_info_view(request, passcode):
         } for visit in visits
     ]
     context = {
-        'passcard': passcard[0],
+        'passcard': passcard,
         'this_passcard_visits': this_passcard_visits
     }
     return render(request, 'passcard_info.html', context)
