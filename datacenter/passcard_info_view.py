@@ -5,8 +5,7 @@ from datacenter.duration_helper import is_visit_long, get_duration
 
 
 def passcard_info_view(request, passcode):
-    get_object_or_404(Passcard.objects.filter(passcode=passcode))
-    passcard = Passcard.objects.get(passcode=passcode)
+    passcard = get_object_or_404(Passcard, passcode=passcode)
     visits = Visit.objects.filter(passcard=passcard)
     this_passcard_visits = [
         {
