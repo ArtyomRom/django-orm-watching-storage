@@ -18,7 +18,7 @@
   ## Установка окружения
 
   1. Склонируйте репозиторий:
-   [link](`https://github.com/ArtyomRom/django-orm-watching-storage.git`)
+   [link](https://github.com/ArtyomRom/django-orm-watching-storage.git)
 
   2. Создайте виртуальное окружение:
         ```bash
