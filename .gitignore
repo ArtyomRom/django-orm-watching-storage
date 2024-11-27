@@ -1,3 +1,5 @@
 .idea
 __pycache__
 .env.replit
+pyproject.toml
+poetry.lock
