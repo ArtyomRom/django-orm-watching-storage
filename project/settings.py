@@ -1,9 +1,8 @@
 import os
-from dotenv import load_dotenv
 from environs import Env
-load_dotenv()
-env = Env()
 
+
+env = Env()
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE'),
