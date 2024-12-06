@@ -18,9 +18,9 @@ DATABASES = {
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env.list('SECRET_KEY')
 
-DEBUG = env('DEBUG').capitalize() == 'True'
+DEBUG = env.bool("DEBUG", default=False)
 
 
 ROOT_URLCONF = 'project.urls'
@@ -47,3 +47,4 @@ TIME_ZONE = 'Europe/Moscow'
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
